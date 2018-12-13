@@ -31,7 +31,7 @@ export const b = _b;
 console.log(a(1,2,3)) //[2,3,4]
 ```
 
-### Refer to module via a class object
+### Refer to functions via a class object
 
 This approach works, and is perhaps a little less scary looking than dependency injection. 
 
