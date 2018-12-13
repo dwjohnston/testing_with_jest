@@ -1,5 +1,6 @@
-// import api from "../api";
-// import axiosMock from "axios";
+import api from "../api";
+import axiosMock from "axios";
+
 
 describe("api", () => {
 
@@ -9,65 +10,65 @@ describe("api", () => {
     });
 })
 
-// describe("api", () => {
+describe("api", () => {
 
-//     // beforeEach(() => {
-//     //     jest.resetModules();
-//     // })
+    beforeEach(() => {
+        jest.resetModules();
+    })
 
-//     // describe("fetchUser(1)", () => {
+    // describe("fetchUser(1)", () => {
 
-//     //     axiosMock.mockImplementationOnce(() => {
-//     //         return Promise.resolve({
-//     //             data: {
-//     //                 name: "FooBar"
-//     //             }
-//     //         });
-//     //     });
+    //     axiosMock.mockImplementationOnce(() => {
+    //         return Promise.resolve({
+    //             data: {
+    //                 name: "FooBar"
+    //             }
+    //         });
+    //     });
 
-//     //     it("test", () => {
-//     //         return fetchUser(1).then((data) => {
-//     //             expect(data.name).toEqual("FooBar");
-//     //         });
-//     //     });
-//     // });
-
-
-//     describe("fetchUserStrings(1,2,3)", () => {
-
-//         const parseUserSpy = jest.spyOn(api, "parseUser")
-//             .mockImplementation(() => "mock");
-//         const parseFetchUserSpy = jest.spyOn(api, "parseUser")
-//             .mockImplementation(() => Promise.resolve("user"));
+    //     it("test", () => {
+    //         return fetchUser(1).then((data) => {
+    //             expect(data.name).toEqual("FooBar");
+    //         });
+    //     });
+    // });
 
 
-//         it("calls parseUser three times", () => {
-//             //console.log(parseUserSpy.mock);
-//             const result = api.fetchUserStrings(1, 2, 3).then(() => {
-//                 expect(parseFetchUserSpy.mock.calls).toHaveLength(3);
-//                 expect(parseUserSpy.mock.calls).toHaveLength(3);
-//                 parseUserSpy.mockRestore();
-//                 parseFetchUserSpy.mockRestore();
+    //     describe("fetchUserStrings(1,2,3)", () => {
 
-//                 expect(result).toEqual(["mock", "mock", "mock"]);
-
-//             });
-//         });
+    //         const parseUserSpy = jest.spyOn(api, "parseUser")
+    //             .mockImplementation(() => "mock");
+    //         const parseFetchUserSpy = jest.spyOn(api, "parseUser")
+    //             .mockImplementation(() => Promise.resolve("user"));
 
 
-//     });
+    //         it("calls parseUser three times", () => {
+    //             //console.log(parseUserSpy.mock);
+    //             const result = api.fetchUserStrings(1, 2, 3).then(() => {
+    //                 expect(parseFetchUserSpy.mock.calls).toHaveLength(3);
+    //                 expect(parseUserSpy.mock.calls).toHaveLength(3);
+    //                 parseUserSpy.mockRestore();
+    //                 parseFetchUserSpy.mockRestore();
 
-//     describe("parseUser", () => {
+    //                 expect(result).toEqual(["mock", "mock", "mock"]);
 
-//         it("returns a 'fullname:username' string", () => {
-//             console.log(api.parseUser);
+    //             });
+    //         });
 
 
-//             expect(api.parseUser({
-//                 name: "foo",
-//                 username: "bar"
-//             })).toEqual("foo:bar");
-//         })
-//     });
-// });
+    //     });
+
+    //     describe("parseUser", () => {
+
+    //         it("returns a 'fullname:username' string", () => {
+    //             console.log(api.parseUser);
+
+
+    //             expect(api.parseUser({
+    //                 name: "foo",
+    //                 username: "bar"
+    //             })).toEqual("foo:bar");
+    //         })
+    //     });
+});
 

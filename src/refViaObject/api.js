@@ -8,7 +8,7 @@ async function makeApiCall(uri) {
         const response = await axios(BASE_URL + uri);
         return response.data;
     } catch (err) {
-        throw err.message;
+        throw new Error(err.message);
     }
 }
 
@@ -22,7 +22,6 @@ async function fetchUser(id) {
 
 async function fetchUserStrings(...ids) {
     const users = await Promise.all(ids.map(id => lib.fetchUser(id)));
-    console.log(users);
     return users.map(user => lib.parseUser(user));
 }
 
