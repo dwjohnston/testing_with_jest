@@ -2,17 +2,15 @@ import { ApiClient } from '../api';
 import axiosMock from "axios";
 
 
-let api;
-beforeAll(() => {
-    console.log("before");
-    api = new ApiClient({
-        baseUrl: 'http://test.com',
-    });
-
-});
 
 describe('api tests', () => {
-
+    let api;
+    beforeEach(() => {
+        api = new ApiClient({
+            baseUrl: 'http://test.com',
+            client: jest.fn()
+        });
+    });
 
     it('makeApiCall should use axios', async () => {
         const response = { data: [] };
@@ -31,13 +29,11 @@ describe('api tests', () => {
     });
 
 
-    it("returns an array of three strings", async () => {
-        expect.assertions(3);
+    it("fetchUserString returns an array of three strings", async () => {
         jest.spyOn(api, 'fetchUser').mockResolvedValue("foo");
         jest.spyOn(api, 'parseUser').mockReturnValue("zzz");
 
         const result = await api.fetchUserStrings(1, 2, 3);
-        console.log(result);
         expect(api.fetchUser).toHaveBeenCalledTimes(3);
         expect(api.parseUser).toHaveBeenCalledTimes(3);
         expect(result).toHaveLength(3);
@@ -45,9 +41,6 @@ describe('api tests', () => {
 
 
     it("returns the name, and username seperated by a ':'", () => {
-
-
-        console.log(api.parseUser);
         expect(api.parseUser({
             username: "foo",
             name: "bar"
