@@ -55,3 +55,11 @@ export default new MyModule();
 
 This lets you mutate the functions to your heart's content when testing, and to reset it, you can just instantiate a new object. 
 
+## Approaches that don't work
+
+### Use require in tests / mock the module directly. 
+
+The group of tests [./useRequireInTests] show my attempt to mock the functions, while also calling the functions directly in the function declaration. This approach looks impossible without rewriting the original `api.js` file. 
+
+If you can make the tests work without modifying it - then feel free to submit a PR. 
+
