@@ -53,5 +53,5 @@ class MyModule {
 export default new MyModule(); 
 ```
 
-This lets you mutate the functions to your heart's content when testing, and you reset it, you can just declare a new object. 
+This lets you mutate the functions to your heart's content when testing, and to reset it, you can just instantiate a new object. 
 
