@@ -17,12 +17,7 @@ export const _fetchUserStrings = async function (_fetchUser, _parseUser, ...ids)
     const users = await Promise.all(ids.map(id => _fetchUser(id)));
     return users.map(user => _parseUser(user));
 }
-
-/**
- * Real exports
- */
-
-export const makeApiCall = async function (uri) {
+export const _makeApiCall = async function (uri) {
     try {
         const response = await axios(BASE_URL + uri);
         return response.data;
@@ -31,11 +26,19 @@ export const makeApiCall = async function (uri) {
     }
 }
 
-export const fetchUsers = _fetchUsers.bind(null, makeApiCall, URI_USERS);
-export const fetchUser = _fetchUser.bind(null, makeApiCall, URI_USERS);
-export const fetchUserStrings = _fetchUserStrings.bind(null, _fetchUser, parseUser);
-
-export function parseUser(user) {
+export function _parseUser(user) {
     return `${user.name}:${user.username}`;
 }
+
+
+
+/**
+ * Real exports
+ */
+export const makeApiCall = _makeApiCall;
+export const parseUser = _parseUser;
+
+export const fetchUsers = _fetchUsers.bind(null, _makeApiCall, URI_USERS);
+export const fetchUser = _fetchUser.bind(null, _makeApiCall, URI_USERS);
+export const fetchUserStrings = _fetchUserStrings.bind(null, _fetchUser, _parseUser);
 

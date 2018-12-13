@@ -1,11 +1,11 @@
-import { makeApiCall, parseUser, _fetchUser, _fetchUserStrings } from "../api";
+import { _makeApiCall, _parseUser, _fetchUser, _fetchUserStrings } from "../api";
 import axiosMock from "axios";
 
 
 /**
  * Here we are mocking the behavior of axios. 
  */
-describe("makeApiCall", () => {
+describe("_makeApiCall", () => {
 
     describe("successful response", () => {
         axiosMock.mockImplementationOnce(() => {
@@ -18,7 +18,7 @@ describe("makeApiCall", () => {
 
         it("returns a data object", async () => {
 
-            const data = await makeApiCall("/foo");
+            const data = await _makeApiCall("/foo");
             expect(data.name).toEqual("FooBar");
         });
 
@@ -36,7 +36,7 @@ describe("makeApiCall", () => {
         it("throws an error object", async () => {
             expect.assertions(1);
             try {
-                const data = await makeApiCall("/foo");
+                const data = await _makeApiCall("/foo");
             }
             catch (err) {
                 expect(err).toBeDefined();
@@ -50,10 +50,10 @@ describe("makeApiCall", () => {
 /**
  * This is the easiest kind of function to test. 
  */
-describe("parseUser", () => {
+describe("_parseUser", () => {
 
     it("returns the name, and username seperated by a ':'", () => {
-        expect(parseUser({
+        expect(_parseUser({
             username: "foo",
             name: "bar"
         })).toEqual("bar:foo");
