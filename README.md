@@ -17,15 +17,16 @@ This is my favourite approach so far.
 This approach has you, when writing functions, not refering to other functions directly, but injecting them. In order to hide the function as a parameter - we use the `.bind` method, like so:
 
 ```
-export const _a = function(_b, ...numbers) {
- return numbers.map(n => _b(n)); 
+export const _a = function(__b, ...numbers) {
+ return numbers.map(n => __b(n)); 
 }; 
 
-export const b = function(n) {
+export const _b = function(n) {
   return n+1; 
 }
 
-export const a = _a.bind(null, b); 
+export const a = _a.bind(null, _b); 
+export const b = _b; 
 
 console.log(a(1,2,3)) //[2,3,4]
 ```
