@@ -22,7 +22,7 @@ describe('api tests', () => {
     //     it('fetchUsers should call makeApiCall', async () => {
     //         const value = [];
     //         jest.doMock("../api", () => ({
-    //             ...jest.requireActual("../api"),
+    //             //...jest.requireActual("../api"),
     //             makeApiCall: jest.fn().mockResolvedValue(value)
     //         }));
     //         const myApi = require("../api");
